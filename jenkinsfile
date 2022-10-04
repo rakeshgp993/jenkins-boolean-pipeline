@@ -1,0 +1,49 @@
+node {
+    properties ([
+        parameters([
+            choice(name:'server_select',choices: ['one','two'],description: 'server the required server for bounce'),
+            booleanParam(name: 'env_start',defaultVaule: true,description: 'only restart server'),
+            booleanParam(name: 'env_stop',defaultVaule: true,description: 'only restart server'),
+            booleanParam(name: 'env_restart',defaultVaule: true,description: 'only restart server')
+        ])//prameters
+
+    ])//end properties
+
+
+    env_start="${params.env_start}".toBoolean()
+    env_stop="${params.env_stop}".toBoolean()
+    env_restart="${params.env_restart}".toBoolean()
+    echo "${env_start}"
+    echo "${env_stop}"
+    echo "${env_restart}"
+    
+    check_all="yes"
+    def flag_check=getRunCheck("${check_all}")
+
+    stage ("start server"){
+        echo ${flag_check}
+        if(!flag_check){
+            echo "deploying the playbook in the Insis Domain:"
+        } else {
+            echo "not deploying the playbook in the Insis Domain:"
+            echo "instead shuting the env, bbye:"
+        }
+    }//end start server
+}//end node
+
+String getRunCheck(String pack1){
+    def flag_check1=""
+    if (!env_start && !env_stop && !env_restart){
+        flag_check1=false
+        echo " flag check ${flag_check1}"
+        echo "input variable ${pack1}"
+        echo "restart env"
+    } else {
+        flag_check1=true
+        echo "run deployment"
+    }//end-if
+    return flag_check1
+}//end getRunCheck
+
+
+
