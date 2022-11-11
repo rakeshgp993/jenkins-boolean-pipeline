@@ -52,6 +52,7 @@ String getRunCheck(String pack1){
     } else {
         flag_check1=true
         echo "run deployment"
+        echo "input variable ${pack1}"
     }//end-if
     return flag_check1
 }//end getRunCheck
