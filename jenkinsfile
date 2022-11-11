@@ -16,7 +16,7 @@ node {
     echo "${env_start}"
     echo "${env_stop}"
     echo "${env_restart}"
-    echo "test 2 master"
+    echo "test 3 master"
     
     check_all="yes"
     def flag_check=getRunCheck("${check_all}")
