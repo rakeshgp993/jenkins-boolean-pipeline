@@ -20,6 +20,9 @@ node {
     
     check_all="yes"
     def flag_check=getRunCheck("${check_all}")
+    stage('start of pipeline'){
+        echo "pipeline start"
+    }
 
     stage ("start server"){
         echo "${flag_check}"
