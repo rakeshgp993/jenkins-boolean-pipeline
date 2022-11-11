@@ -2,9 +2,9 @@ node {
     properties ([
         parameters([
             choice(name:'server_select',choices: ['one','two'],description: 'server the required server for bounce'),
-            booleanParam(name: 'env_start',defaultVaule: true,description: 'only restart server'),
-            booleanParam(name: 'env_stop',defaultVaule: true,description: 'only restart server'),
-            booleanParam(name: 'env_restart',defaultVaule: true,description: 'only restart server')
+            booleanParam(name: 'env_start', defaultVaule: true, description: 'only restart server'),
+            booleanParam(name: 'env_stop', defaultVaule: true, description: 'only restart server'),
+            booleanParam(name: 'env_restart', defaultVaule: true, description: 'only restart server')
         ])//prameters
 
     ])//end properties
