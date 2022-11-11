@@ -31,15 +31,15 @@ node {
         }
     }//end start server
 
-    // env.NODEJS_HOME = "${tool 'node'}"
-    // env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"    
-    // buildJavascriptApp deploy: false, {
-    //     notify type: "slack", message: "Build succeeded sejal rakudi patil"
-    // }
+    env.NODEJS_HOME = "${tool 'node'}"
+    env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"    
+    buildJavascriptApp deploy: false, {
+        notify type: "slack", message: "Build succeeded sejal rakudi patil"
+    }
 
-    // stage('end of pipeline'){
-    //     echo "pipeline end"
-    // }
+    stage('end of pipeline'){
+        echo "pipeline end"
+    }
 }//end node
 
 String getRunCheck(String pack1){
