@@ -16,6 +16,8 @@ node {
     echo "${env_start}"
     echo "${env_stop}"
     echo "${env_restart}"
+    env.NODEJS_HOME = "${tool 'node'}"
+    env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
     
     check_all="yes"
     def flag_check=getRunCheck("${check_all}")
@@ -29,6 +31,14 @@ node {
             echo "instead shuting the env, bbye:"
         }
     }//end start server
+    
+    buildJavascriptApp deploy: false, {
+        notify type: "slack", message: "Build succeeded sejal rakudi patil"
+    }
+
+    stage('end of pipeline'){
+        echo "pipeline end"
+    }
 }//end node
 
 String getRunCheck(String pack1){
